@@ -1,0 +1,631 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Yu Chen Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400..900;1,400..900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#eef0e9;
+    --paper-raised:#e2e6d9;
+    --paper-line:#c8cdba;
+    --ink:#1c1f1a;
+    --ink-soft:#54594c;
+    --ink-faint:#868c78;
+    --clay:#a85a3a;
+    --clay-soft:#c98f6f;
+    --slate:#33545d;
+    --slate-soft:#5e8892;
+    --violet:#5f4270;
+    --violet-soft:#9c7bb0;
+    --on-clay:#fbf3ee;
+    --on-slate:#eef4f4;
+    --on-violet:#f2ecf5;
+    --shadow: 0 1px 0 var(--paper-line);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15170f;
+      --paper-raised:#1e2117;
+      --paper-line:#343a29;
+      --ink:#eceee3;
+      --ink-soft:#aab09b;
+      --ink-faint:#787f6c;
+      --clay:#e08a5f;
+      --clay-soft:#a85a3a;
+      --slate:#7fb0ba;
+      --slate-soft:#33545d;
+      --violet:#b493c7;
+      --violet-soft:#5f4270;
+      --on-clay:#241209;
+      --on-slate:#0d1a1c;
+      --on-violet:#1c1220;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15170f;
+    --paper-raised:#1e2117;
+    --paper-line:#343a29;
+    --ink:#eceee3;
+    --ink-soft:#aab09b;
+    --ink-faint:#787f6c;
+    --clay:#e08a5f;
+    --clay-soft:#a85a3a;
+    --slate:#7fb0ba;
+    --slate-soft:#33545d;
+    --violet:#b493c7;
+    --violet-soft:#5f4270;
+    --on-clay:#241209;
+    --on-slate:#0d1a1c;
+    --on-violet:#1c1220;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Newsreader", Georgia, "Times New Roman", serif;
+    font-size:17px;
+    line-height:1.55;
+    padding:0 22px;
+  }
+  h1,h2,h3,.disp{
+    font-family:"Archivo", "Helvetica Neue", Arial, sans-serif;
+    text-wrap:balance;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1180px;margin-inline:auto;}
+  .prose{max-width:62ch;}
+
+  /* ---------- top index bar ---------- */
+  .indexbar{
+    position:sticky; top:0; z-index:40;
+    background:color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--paper-line);
+    margin:0 -22px;
+    padding:0 22px;
+  }
+  .indexbar-inner{
+    max-width:1180px;margin-inline:auto;
+    display:flex; align-items:center; gap:22px;
+    overflow-x:auto; white-space:nowrap;
+    padding:12px 0;
+    scrollbar-width:none;
+  }
+  .indexbar-inner::-webkit-scrollbar{display:none;}
+  .indexbar .brand{
+    font-family:"Archivo", sans-serif; font-weight:800; font-size:0.95rem;
+    letter-spacing:0.02em; flex:0 0 auto;
+  }
+  .indexbar nav{display:flex; gap:16px; flex:0 0 auto;}
+  .indexbar nav a{
+    font-family:"IBM Plex Mono", monospace; font-size:0.72rem;
+    letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--ink-soft); text-decoration:none; flex:0 0 auto;
+    border-bottom:1px solid transparent; padding-bottom:2px;
+  }
+  .indexbar nav a:hover{color:var(--ink); border-color:var(--paper-line);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding-block: 64px 40px;
+    overflow:hidden;
+  }
+  .hero-contours{
+    position:absolute; inset:-10% -5% auto -5%; height:120%;
+    width:110%; z-index:0; opacity:0.55; pointer-events:none;
+  }
+  .hero-contours path{
+    fill:none; stroke:var(--paper-line); stroke-width:1;
+  }
+  .hero-inner{position:relative; z-index:1;}
+  .eyebrow{
+    font-family:"IBM Plex Mono", monospace; font-size:0.78rem;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--clay);
+    display:flex; align-items:center; gap:10px; margin:0 0 22px;
+  }
+  .eyebrow::before{
+    content:""; width:26px; height:1px; background:var(--clay); display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(3rem, 9vw, 6.4rem);
+    font-weight:800;
+    line-height:0.94;
+    margin:0 0 18px;
+  }
+  .hero-title{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.95rem; letter-spacing:0.03em;
+    color:var(--ink-soft); text-transform:uppercase;
+    margin:0 0 30px;
+  }
+  .hero-statement{
+    font-style:italic; font-weight:400;
+    font-size:clamp(1.15rem, 2.4vw, 1.55rem);
+    max-width:34ch;
+    color:var(--ink);
+    border-left:2px solid var(--clay);
+    padding-left:22px;
+    margin:0 0 8px;
+  }
+  .hero-meta{
+    margin-top:34px; display:flex; gap:28px; flex-wrap:wrap;
+    font-family:"IBM Plex Mono", monospace; font-size:0.78rem;
+    color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.03em;
+  }
+  .hero-meta strong{color:var(--ink-soft); font-weight:600;}
+
+  /* ---------- legend / TOC ---------- */
+  .legend{
+    padding-block:36px 54px;
+    border-top:1px solid var(--paper-line);
+    border-bottom:1px solid var(--paper-line);
+  }
+  .legend-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:36px;
+  }
+  @media (max-width:760px){ .legend-grid{grid-template-columns:1fr;} }
+  .legend-group h3{
+    font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
+    font-weight:700; color:var(--ink-faint); margin:0 0 14px;
+  }
+  .legend-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px;}
+  .legend-list a{
+    display:flex; gap:12px; align-items:baseline; text-decoration:none;
+    padding:8px 0; border-bottom:1px solid var(--paper-line);
+    color:var(--ink);
+  }
+  .legend-list a:hover .legend-name{color:var(--clay);}
+  .legend-num{
+    font-family:"IBM Plex Mono", monospace; font-size:0.8rem; color:var(--ink-faint);
+    flex:0 0 auto;
+  }
+  .legend-name{font-family:"Archivo",sans-serif; font-weight:600; font-size:0.98rem; transition:color .15s;}
+
+  /* ---------- section shell ---------- */
+  section.project{
+    padding-block:64px;
+    border-bottom:1px solid var(--paper-line);
+  }
+  .kicker{
+    display:flex; align-items:center; gap:14px; margin-bottom:18px;
+  }
+  .kicker .num{
+    font-family:"IBM Plex Mono", monospace; font-size:0.85rem; color:var(--clay);
+  }
+  .kicker .cat{
+    font-family:"IBM Plex Mono", monospace; font-size:0.7rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--ink-faint);
+  }
+  .proj-title{
+    font-size:clamp(1.7rem, 3.4vw, 2.5rem); font-weight:800; margin:0 0 6px;
+  }
+  .proj-tag{
+    font-style:italic; color:var(--ink-soft); margin:0 0 22px; font-size:1.05rem;
+  }
+  .meta-row{
+    display:flex; flex-wrap:wrap; gap:8px 18px; margin-bottom:26px;
+  }
+  .meta-row span{
+    font-family:"IBM Plex Mono", monospace; font-size:0.72rem;
+    text-transform:uppercase; letter-spacing:0.03em; color:var(--ink-faint);
+  }
+  .meta-row span b{color:var(--ink-soft); font-weight:600;}
+
+  .proj-layout{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:start;
+  }
+  .proj-layout.reverse{grid-template-columns:0.9fr 1.1fr;}
+  .proj-layout.reverse .proj-figs{order:2;}
+  .proj-layout.reverse .proj-text{order:1;}
+  @media (max-width:860px){
+    .proj-layout, .proj-layout.reverse{grid-template-columns:1fr;}
+    .proj-layout.reverse .proj-figs{order:0;} .proj-layout.reverse .proj-text{order:0;}
+  }
+  .proj-figs{display:flex; flex-direction:column; gap:14px;}
+  .proj-figs figure{margin:0;}
+  .proj-figs img{
+    width:100%; height:auto; border:1px solid var(--paper-line);
+  }
+  figcaption{
+    font-family:"IBM Plex Mono", monospace; font-size:0.68rem;
+    color:var(--ink-faint); margin-top:6px; letter-spacing:0.02em;
+  }
+  .proj-text p{margin:0 0 14px; color:var(--ink-soft);}
+  .proj-text p:first-of-type{color:var(--ink);}
+
+  .accent-clay .kicker .num, .accent-clay .proj-tag{color:var(--clay);}
+  .accent-slate .kicker .num, .accent-slate .proj-tag{color:var(--slate);}
+
+  /* ---------- thesis spotlight ---------- */
+  .thesis{
+    background:var(--ink); color:var(--paper);
+    margin:0 -22px; padding:80px 22px;
+    border-bottom:1px solid var(--paper-line);
+  }
+  :root[data-theme="dark"] .thesis, @media (prefers-color-scheme:dark){ .thesis{} }
+  .thesis .wrap{position:relative;}
+  .thesis .kicker .num{color:var(--violet-soft);}
+  .thesis .kicker .cat{color:#9aa190;}
+  .thesis-title{
+    font-size:clamp(1.9rem, 4vw, 2.9rem); font-weight:800; color:var(--paper);
+    margin:0 0 10px; max-width:18ch;
+  }
+  .thesis-sub{
+    font-style:italic; font-size:1.15rem; color:#cfd3c4; max-width:44ch; margin:0 0 30px;
+  }
+  .thesis-meta{
+    display:flex; flex-wrap:wrap; gap:8px 18px; margin-bottom:36px;
+  }
+  .thesis-meta span{
+    font-family:"IBM Plex Mono", monospace; font-size:0.72rem;
+    text-transform:uppercase; color:#8d9384;
+  }
+  .thesis-body{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;
+  }
+  @media (max-width:860px){ .thesis-body{grid-template-columns:1fr;} }
+  .thesis-body p{color:#d7dacd; margin:0 0 14px;}
+  .thesis-figs{display:flex; flex-direction:column; gap:14px;}
+  .thesis-figs img{width:100%; border:1px solid #3a3d31;}
+  .thesis-figs figcaption{color:#7d836f;}
+
+  /* ---------- other works grid ---------- */
+  .other-works{padding-block:64px; border-bottom:1px solid var(--paper-line);}
+  .ow-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
+    background:var(--paper-line);
+    border:1px solid var(--paper-line);
+  }
+  @media (max-width:760px){ .ow-grid{grid-template-columns:1fr;} }
+  .ow-card{
+    background:var(--paper); padding:26px; display:flex; flex-direction:column; gap:14px;
+  }
+  .ow-card img{width:100%; aspect-ratio:16/10; object-fit:cover; border:1px solid var(--paper-line);}
+  .ow-kicker{display:flex; gap:10px; align-items:baseline;}
+  .ow-kicker .num{font-family:"IBM Plex Mono",monospace; font-size:0.8rem; color:var(--slate);}
+  .ow-title{font-family:"Archivo",sans-serif; font-weight:700; font-size:1.15rem; margin:0;}
+  .ow-card .meta-row{margin-bottom:4px;}
+  .ow-card p{margin:0; color:var(--ink-soft); font-size:0.96rem;}
+
+  /* ---------- skills ---------- */
+  .skills{padding-block:64px; border-bottom:1px solid var(--paper-line);}
+  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:36px 48px;}
+  @media (max-width:760px){ .skills-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:480px){ .skills-grid{grid-template-columns:1fr;} }
+  .skill-group h3{
+    font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--ink-faint); font-weight:700; margin:0 0 14px;
+  }
+  .meter{margin-bottom:12px;}
+  .meter-label{
+    display:flex; justify-content:space-between; font-family:"IBM Plex Mono",monospace;
+    font-size:0.76rem; color:var(--ink-soft); margin-bottom:5px;
+  }
+  .meter-track{height:5px; background:var(--paper-raised); border:1px solid var(--paper-line);}
+  .meter-fill{height:100%; background:var(--clay);}
+  .skill-group.water .meter-fill{background:var(--slate);}
+
+  /* ---------- footer ---------- */
+  footer{padding-block:64px 80px;}
+  .footer-grid{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px;
+    align-items:flex-end;
+  }
+  .footer-name{font-family:"Archivo",sans-serif; font-weight:800; font-size:1.6rem; margin:0 0 6px;}
+  .footer-email{
+    font-family:"IBM Plex Mono",monospace; font-size:0.95rem; color:var(--clay);
+    text-decoration:none;
+  }
+  .footer-note{
+    font-family:"IBM Plex Mono",monospace; font-size:0.72rem; color:var(--ink-faint);
+    text-transform:uppercase; letter-spacing:0.03em; text-align:right;
+  }
+  @media (max-width:520px){ .footer-note{text-align:left;} }
+</style>
+
+<div class="indexbar">
+  <div class="indexbar-inner">
+    <span class="brand">YU CHEN</span>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#p01">01 Rehab</a>
+      <a href="#p02">02 Bridge</a>
+      <a href="#p03">03 Border</a>
+      <a href="#p04">04 Garden</a>
+      <a href="#p05">05 Lake</a>
+      <a href="#p06">06 Thesis</a>
+      <a href="#p07">07 Pollution</a>
+      <a href="#other">08–11 Other</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero" id="about">
+    <svg class="hero-contours" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M-20,120 C 150,60 300,180 480,110 S 780,40 1020,130" />
+      <path d="M-20,200 C 180,150 320,260 500,190 S 760,120 1020,210" />
+      <path d="M-20,280 C 160,340 340,220 520,300 S 800,360 1020,290" />
+      <path d="M-20,380 C 200,320 360,420 540,360 S 820,300 1020,400" />
+      <path d="M-20,470 C 170,530 330,430 510,500 S 790,560 1020,480" />
+      <path d="M-20,560 C 210,500 370,600 560,540 S 830,470 1020,570" />
+      <path d="M-20,40 C 140,10 280,70 460,30 S 760,-10 1020,50" />
+    </svg>
+    <div class="hero-inner">
+      <p class="eyebrow">Portfolio · RISD Master of Landscape Architecture</p>
+      <h1>Yu Chen</h1>
+      <p class="hero-title">Landscape Designer — Systemic Thinker</p>
+      <p class="hero-statement">"Landscape is one of the living networks that connects humans with social life, ecology, and culture&nbsp;— dynamic and self&#8209;generated, together with the growth of the city around it."</p>
+      <div class="hero-meta">
+        <span><strong>Based</strong> Providence, RI</span>
+        <span><strong>Education</strong> RISD MLA</span>
+        <span><strong>Focus</strong> Ecology · Systems · Public Landscape</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="legend" aria-label="Contents">
+    <div class="legend-grid">
+      <div class="legend-group">
+        <h3>Projects</h3>
+        <ul class="legend-list">
+          <li><a href="#p01"><span class="legend-num">01</span><span class="legend-name">Rehabilitation</span></a></li>
+          <li><a href="#p02"><span class="legend-num">02</span><span class="legend-name">Bridge Beyond</span></a></li>
+          <li><a href="#p03"><span class="legend-num">03</span><span class="legend-name">Border Crosser</span></a></li>
+          <li><a href="#p04"><span class="legend-num">04</span><span class="legend-name">Sensory Garden</span></a></li>
+          <li><a href="#p05"><span class="legend-num">05</span><span class="legend-name">Living Lake</span></a></li>
+        </ul>
+      </div>
+      <div class="legend-group">
+        <h3>Research</h3>
+        <ul class="legend-list">
+          <li><a href="#p06"><span class="legend-num">06</span><span class="legend-name">Systemic Thinking — Thesis</span></a></li>
+          <li><a href="#p07"><span class="legend-num">07</span><span class="legend-name">Production from Pollution</span></a></li>
+        </ul>
+      </div>
+      <div class="legend-group">
+        <h3>Other Works</h3>
+        <ul class="legend-list">
+          <li><a href="#other"><span class="legend-num">08</span><span class="legend-name">Grading Design</span></a></li>
+          <li><a href="#other"><span class="legend-num">09</span><span class="legend-name">Gardening Practice</span></a></li>
+          <li><a href="#other"><span class="legend-num">10</span><span class="legend-name">Installation Proposal</span></a></li>
+          <li><a href="#other"><span class="legend-num">11</span><span class="legend-name">Mapping Flood</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 REHABILITATION -->
+  <section class="project accent-clay" id="p01">
+    <div class="kicker"><span class="num">01 /11</span><span class="cat">Mine Rehabilitation · Ecology</span></div>
+    <h2 class="proj-title">Rehabilitation</h2>
+    <p class="proj-tag">Rebuilding a mine, soil layer by soil layer.</p>
+    <div class="meta-row">
+      <span><b>Location</b> Tianneng Mine, Fujian Province, China</span>
+      <span><b>Program</b> ECUST, 2018</span>
+      <span><b>Instructor</b> Lu Feng</span>
+    </div>
+    <div class="proj-layout">
+      <div class="proj-figs">
+        <figure><img src="img/01-rehab-a.jpg" alt="Masterplan and axonometric diagrams applying ecology, production, recreation, and economy programs across the former mine site" loading="lazy"><figcaption>Application of the rehabilitation — ecology, production, recreation, and economy programs across the site</figcaption></figure>
+        <figure><img src="img/01-rehab-b.jpg" alt="Rendered views of therapeutic and harvesting cells planted into the reclaimed mine terrain" loading="lazy"><figcaption>Ecological rehabilitation — therapeutic, harvesting, and defensive cells</figcaption></figure>
+      </div>
+      <div class="proj-text">
+        <p>Mining land is usually treated as a destroyer of the environment, abandoned and forgotten once extraction ends. This project reads the site's soil horizons — humus, topsoil, subsoil, substratum, bedrock — to understand exactly which layers each mining method destroyed.</p>
+        <p>Rebuilding proceeds layer by layer, matching therapeutic, harvesting, defensive, trading, fish-nursery, and recreation cells to the depth of damage beneath them, so ecological repair and the local mining economy recover together instead of trading one off against the other.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 BRIDGE BEYOND -->
+  <section class="project accent-clay" id="p02">
+    <div class="kicker"><span class="num">02 /11</span><span class="cat">Urban Renewal · Programming</span></div>
+    <h2 class="proj-title">Bridge Beyond</h2>
+    <p class="proj-tag">Stitching Downcity back to Providence, across a highway.</p>
+    <div class="meta-row">
+      <span><b>Location</b> Downtown Providence, RI</span>
+      <span><b>Program</b> RISD, Fall 2020</span>
+      <span><b>Team</b> with Yu Xiao, Allen Liu, Sirui Wang</span>
+    </div>
+    <div class="proj-layout reverse">
+      <div class="proj-figs">
+        <figure><img src="img/02-bridge-a.jpg" alt="Aerial rendering of the proposed Providence Market connecting to Providence Mall across the highway" loading="lazy"><figcaption>Proposed Providence Market, linking the mall to the highway-crossing park</figcaption></figure>
+        <figure><img src="img/02-bridge-b.jpg" alt="Detail photograph of the physical study model showing bridge public spaces at street level" loading="lazy"><figcaption>Physical model detail — the bridge's public ground floor</figcaption></figure>
+      </div>
+      <div class="proj-text">
+        <p>A highway boundary splits Downcity from the rest of Providence. This proposal works at two scales: a regional plan for the corridor, and a detailed design for a new Providence Market that connects directly into the mall.</p>
+        <p>Green roofs and a second-floor walking system carry pedestrians across the highway safely, turning what was a hard edge into a wandering, sitting, quick-lunch kind of place — with the river finally back in view.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 BORDER CROSSER -->
+  <section class="project accent-slate" id="p03">
+    <div class="kicker"><span class="num">03 /11</span><span class="cat">Watershed · Typologies</span></div>
+    <h2 class="proj-title">Border Crosser</h2>
+    <p class="proj-tag">A political line the water never recognized.</p>
+    <div class="meta-row">
+      <span><b>Location</b> St. Croix River, USA &amp; Canada</span>
+      <span><b>Program</b> RISD, Fall 2021</span>
+      <span><b>Team</b> with Ziyu Zhou</span>
+    </div>
+    <div class="proj-layout">
+      <div class="proj-figs">
+        <figure><img src="img/03-border-a.jpg" alt="Illustrated cross-section of the St Croix River watershed showing salmon, seals, an orca, and a moose moving freely across the US-Canada border" loading="lazy"><figcaption>The watershed's border crossers — salmon, seal, orca, moose</figcaption></figure>
+      </div>
+      <div class="proj-text">
+        <p>The US–Canada border runs straight through the St. Croix watershed — a political division that the water flow, the fish, and the wider ecosystem never agreed to. Salmon in particular are shared and valued by both countries.</p>
+        <p>That shared stake becomes the opening for cooperative habitat rehabilitation: removing the dams that block migration, and rebuilding the watershed as one continuous system rather than two national halves.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 SENSORY GARDEN -->
+  <section class="project accent-clay" id="p04">
+    <div class="kicker"><span class="num">04 /11</span><span class="cat">Healing Landscape · Community</span></div>
+    <h2 class="proj-title">Sensory Garden</h2>
+    <p class="proj-tag">A courtyard designed to be read by touch.</p>
+    <div class="meta-row">
+      <span><b>Location</b> Fengxian Eye Hospital, Shanghai</span>
+      <span><b>Program</b> ECUST, 2018</span>
+      <span><b>Instructor</b> Lu Feng</span>
+    </div>
+    <div class="proj-layout reverse">
+      <div class="proj-figs">
+        <figure><img src="img/04-garden-a.jpg" alt="Rendering of the shared vegetable garden filled with wildflowers and residents and patients spending time together" loading="lazy"><figcaption>Shared vegetable garden — community participation</figcaption></figure>
+        <figure><img src="img/04-garden-b.jpg" alt="Rendering of the tactile square with textured columns for visitors with visual impairment to navigate by touch" loading="lazy"><figcaption>Tactile square — columns in illuminated glass, braille, and varied material</figcaption></figure>
+      </div>
+      <div class="proj-text">
+        <p>Designed specifically for patients with amblyopia at a Shanghai eye hospital. Sunshade shelves, ornamental tree arrays, and a hydrophilic wooden walkway soften and organize a site for people with high light sensitivity and limited or blurred vision.</p>
+        <p>A tactile square lets visitors navigate by hand — textured columns, illuminated glass, braille markers — while a shared vegetable garden gives patients and residents a reason to linger and work side by side.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 LIVING LAKE -->
+  <section class="project accent-slate" id="p05">
+    <div class="kicker"><span class="num">05 /11</span><span class="cat">Waterfront · Material Prototyping</span></div>
+    <h2 class="proj-title">Living Lake</h2>
+    <p class="proj-tag">A concrete dam, retrofit into a living edge.</p>
+    <div class="meta-row">
+      <span><b>Location</b> Chao Lake, Hefei, China</span>
+      <span><b>Program</b> RISD, Fall 2020</span>
+      <span><b>Instructor</b> Sara Cohen</span>
+    </div>
+    <div class="proj-layout">
+      <div class="proj-figs">
+        <figure><img src="img/05-lake-a.jpg" alt="Digital render of a modular lattice unit breaking apart into smaller fish-habitat components against a pale blue ground" loading="lazy"><figcaption>Modular unit — lattice for soil and roots, breaking into fish habitat</figcaption></figure>
+      </div>
+      <div class="proj-text">
+        <p>Chao Lake's existing concrete dam is structurally strong but ecologically flat — too smooth a surface for plants to hold a nutrient layer, or for one of the lake's most precious fish species to find a place to spawn. Handrails keep people from the water's edge entirely.</p>
+        <p>A single modular unit, cast in a diamond lattice, does three jobs at once: it holds soil for planting, breaks apart into fish-scaled habitat pockets, and steps down to the water so people can finally climb to the edge and hang out.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 THESIS SPOTLIGHT -->
+  <section class="thesis" id="p06">
+    <div class="wrap">
+      <div class="kicker"><span class="num mono">06 /11</span><span class="cat mono">Thesis · RISD, Spring 2022</span></div>
+      <h2 class="thesis-title">Systemic Thinking</h2>
+      <p class="thesis-sub">Experimenting with a way of landscape design to trigger empathy between pedestrians in the urban transport system.</p>
+      <div class="thesis-meta">
+        <span>Researcher: Yu Chen</span>
+        <span>Instructor: Tiago Torres-Campos</span>
+      </div>
+      <div class="thesis-body">
+        <div>
+          <p>This thesis names the accessibility deficiencies built into everyday urban systems, then asks what landscape design owes the pedestrians who move through them unevenly — the ones for whom a curb, a crossing, or a flight of stairs is never neutral.</p>
+          <p>It applies systemic thinking to the pedestrian system specifically: treating the city not as a solved problem to be designed once, but as a dynamic, self-generating system — capable of learning, the way an ecosystem does, from constant feedback between people, infrastructure, and consequence.</p>
+        </div>
+        <div class="thesis-figs">
+          <figure><img src="img/06-thesis-a.jpg" alt="Dark abstract composition layering aerial imagery with organic mesh and root-like textures for the systemic thinking thesis" loading="lazy"><figcaption>Systemic thinking, Part II — research opening</figcaption></figure>
+          <figure><img src="img/06-thesis-b.jpg" alt="Collage of dancers, neurons, elephants, and a tree rendered in violet against a black ground illustrating diversity across systems" loading="lazy"><figcaption>System thinking application — diversity across trees, neurons, and human society</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 PRODUCTION FROM POLLUTION -->
+  <section class="project accent-clay" id="p07">
+    <div class="kicker"><span class="num">07 /11</span><span class="cat">Brownfield Research</span></div>
+    <h2 class="proj-title">Production from Pollution</h2>
+    <p class="proj-tag">Planting as the strategy to turn brownfields into bouquets.</p>
+    <div class="meta-row">
+      <span><b>Location</b> Phillipsdale Historic District, Providence, RI</span>
+      <span><b>Program</b> RISD, Spring 2020</span>
+      <span><b>Team</b> with Hongfei Zuo</span>
+    </div>
+    <div class="proj-layout reverse">
+      <div class="proj-figs">
+        <figure><img src="img/07-pollution-a.jpg" alt="Diagram tracing wire, oil, and paper factory residue through pollution, remediation, and flowers into decoration, medicine, education, and economic production" loading="lazy"><figcaption>From residue to bouquet — pollution, remediation, and economic production</figcaption></figure>
+      </div>
+      <div class="proj-text">
+        <p>Soil sampled across positions on a former industrial site turned out richer and stranger than expected: sandy in places, stony in others, some of it still organic with old roofing debris mixed through, some of it genuinely polluted.</p>
+        <p>Rather than scrape that history away, this research proposes planting directly into it — turning contaminated ground into cut flowers grown for decoration, medicine, education, and local economic production, remediation and income from the same beds.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER WORKS -->
+  <section class="other-works" id="other">
+    <div class="kicker"><span class="num mono" style="color:var(--slate)">08–11 /11</span><span class="cat">Other Works</span></div>
+    <h2 class="proj-title" style="margin-bottom:28px;">Studies &amp; Studio Exercises</h2>
+    <div class="ow-grid">
+      <article class="ow-card">
+        <img src="img/08-grading-a.jpg" alt="Contour grading plan for a parking lot site between a law office and the Providence River" loading="lazy">
+        <div class="ow-kicker"><span class="num">08</span><span class="ow-title">Grading Design</span></div>
+        <div class="meta-row"><span><b>Constructed Ground</b> — BEB Parking Lot, Providence, RI</span><span>RISD, Winter 2020</span></div>
+        <p>Topography alone, tuned to slow people down — grading and water flow are the only tools, shaping how open or enclosed each pocket of the site feels.</p>
+      </article>
+      <article class="ow-card">
+        <img src="img/09-gardening-a.jpg" alt="Photo grid documenting a year of hands-on garden planting and maintenance in Xuhui, Shanghai" loading="lazy">
+        <div class="ow-kicker"><span class="num">09</span><span class="ow-title">Gardening Practice</span></div>
+        <div class="meta-row"><span><b>Planting Design</b> — Ecology Community, Xuhui, Shanghai</span><span>ECUST, 2017</span></div>
+        <p>A year of hands-on maintenance, from clearing grass to choosing bloom time, height, and color — and staying responsible for the bed long after planting day.</p>
+      </article>
+      <article class="ow-card">
+        <img src="img/10-installation-a.jpg" alt="Rendered sculptural installation with a spiral stair descending underground beneath hanging plants, proposed for a pocket park" loading="lazy">
+        <div class="ow-kicker"><span class="num">10</span><span class="ow-title">Installation Proposal</span></div>
+        <div class="meta-row"><span><b>Pocket Park</b> — Nanqiao Community, Shanghai</span><span>ECUST, 2018</span></div>
+        <p>A structure that lets visitors descend into the soil itself, to monitor root health and rediscover a relationship with the ground usually hidden underfoot.</p>
+      </article>
+      <article class="ow-card">
+        <img src="img/11-flood-a.jpg" alt="Region-scale GIS map of Providence showing projected sea level rise and flood hazard areas along the waterfront" loading="lazy">
+        <div class="ow-kicker"><span class="num">11</span><span class="ow-title">Mapping Flood</span></div>
+        <div class="meta-row"><span><b>Representation</b> — Providence, RI · data: RI GIS</span><span>RISD, Spring 2020</span></div>
+        <p>Region-, city-, and site-scale maps tracing how tides and sea-level rise reshape the edges of Providence, from 2030 through 2080.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills">
+    <div class="kicker"><span class="num" style="color:var(--ink-faint)">—</span><span class="cat">Tools &amp; Languages</span></div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Drawing</h3>
+        <div class="meter"><div class="meter-label"><span>Photoshop</span></div><div class="meter-track"><div class="meter-fill" style="width:96%"></div></div></div>
+        <div class="meter"><div class="meter-label"><span>Illustrator</span></div><div class="meter-track"><div class="meter-fill" style="width:94%"></div></div></div>
+        <div class="meter"><div class="meter-label"><span>InDesign</span></div><div class="meter-track"><div class="meter-fill" style="width:94%"></div></div></div>
+        <div class="meter"><div class="meter-label"><span>AutoCAD / ArcGIS</span></div><div class="meter-track"><div class="meter-fill" style="width:78%"></div></div></div>
+        <div class="meter"><div class="meter-label"><span>Lumion / Procreate</span></div><div class="meter-track"><div class="meter-fill" style="width:70%"></div></div></div>
+      </div>
+      <div class="skill-group water">
+        <h3>Modeling &amp; Motion</h3>
+        <div class="meter"><div class="meter-label"><span>Rhino</span></div><div class="meter-track"><div class="meter-fill" style="width:62%"></div></div></div>
+        <div class="meter"><div class="meter-label"><span>SketchUp</span></div><div class="meter-track"><div class="meter-fill" style="width:58%"></div></div></div>
+        <div class="meter"><div class="meter-label"><span>Premiere / After Effects</span></div><div class="meter-track"><div class="meter-fill" style="width:46%"></div></div></div>
+        <div class="meter"><div class="meter-label"><span>WordPress</span></div><div class="meter-track"><div class="meter-fill" style="width:40%"></div></div></div>
+      </div>
+      <div class="skill-group">
+        <h3>Language</h3>
+        <div class="meter"><div class="meter-label"><span>Mandarin</span></div><div class="meter-track"><div class="meter-fill" style="width:100%"></div></div></div>
+        <div class="meter"><div class="meter-label"><span>English</span></div><div class="meter-track"><div class="meter-fill" style="width:80%"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-name">Let's talk landscape.</p>
+        <a class="footer-email" href="mailto:yuchen.vickie@gmail.com">yuchen.vickie@gmail.com</a>
+      </div>
+      <p class="footer-note">Providence, RI — RISD MLA<br>Portfolio work, 2017–2022</p>
+    </div>
+  </footer>
+</div>
+
+</body></html>
